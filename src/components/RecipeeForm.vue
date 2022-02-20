@@ -131,18 +131,18 @@ export default {
            this.alertErrors = []
          },
          onFileChange(e) {
-           console.log('unutra')
-          var files = e.target.files || e.dataTransfer.files;
+
+          let files = e.target.files || e.dataTransfer.files;
           if (!files.length)
             return;
           this.imageFile = e.target.files[0]  
           this.createImage(files[0]);
         },
     createImage(file) {
-      console.log('create-image')
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+
+      let image = new Image();
+      let reader = new FileReader();
+      let vm = this;
   
       reader.onload = (e) => {
         vm.image = e.target.result;
@@ -201,46 +201,46 @@ export default {
     margin-bottom: 15px;
 }
 
-.alert {
-  margin-top:20px;
-  padding: 10px;
-  background-color: green;
-  color: white;
-  border-radius: 20px;
+    .alert {
+      margin-top:20px;
+      padding: 10px;
+      background-color: green;
+      color: white;
+      border-radius: 20px;
 
-}
+    }
 
-.alert-errors {
-  margin-top:20px;
-  padding: 10px;
-  background-color:red;
-  color: white;
-  border-radius: 20px;
+    .alert-errors {
+      margin-top:20px;
+      padding: 10px;
+      background-color:red;
+      color: white;
+      border-radius: 20px;
 
-}
+    }
 
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.closebtn:hover {
-  color: black;
-}
+    .closebtn:hover {
+      color: black;
+    }
 
-img {
-  width: 150px;
-  display: block;
-  margin-bottom: 10px;
-}
+    img {
+      width: 150px;
+      display: block;
+      margin-bottom: 10px;
+    }
 
-#image-select{
-  margin-bottom: 20px;
-}
+    #image-select{
+      margin-bottom: 20px;
+    }
 </style>

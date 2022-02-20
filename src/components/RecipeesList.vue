@@ -79,7 +79,7 @@ export default {
       if(currentPage !== 1){
           queryObject.page = currentPage
       }
-      console.log(queryObject)
+
       queryObject = Object.keys(queryObject).length !== 0 ? queryObject : null;
       this.$router.replace({ path: '/recipees',  query : queryObject})   
 
@@ -113,19 +113,19 @@ export default {
       overflow: auto;
   }
 
-#searchbar{
-min-width: 200px;
-width: 500px;
-margin-top:20px;
-margin-left: 10px;
-}
-
-#no-data{
-
-  margin-top: 20px;
-  font-size: 20px;
-  font-style:italic;
+  #searchbar{
+  min-width: 200px;
+  width: 500px;
+  margin-top:20px;
   margin-left: 10px;
+  }
 
-}
+  #no-data{
+
+    margin-top: 20px;
+    font-size: 20px;
+    font-style:italic;
+    margin-left: 10px;
+
+  }
 </style>

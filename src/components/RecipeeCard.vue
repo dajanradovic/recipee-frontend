@@ -71,55 +71,55 @@ export default {
 
 <style scoped>
 
-.btn{
-    width: 100px;
-    margin: 5px;
-}
+    .btn{
+        width: 100px;
+        margin: 5px;
+    }
 
-.ingridients{
-    padding:1px 1px 1px 1px;
-    color:white;
-    background-color:#0b99df;
-    border-radius:5px;
-     font-size: 10px;
-     margin: 2px 2px 2px 2px;
-}
-.card-action{
-    margin-top: 5px;
-    
-}
+    .ingridients{
+        padding:1px 1px 1px 1px;
+        color:white;
+        background-color:#0b99df;
+        border-radius:5px;
+        font-size: 10px;
+        margin: 2px 2px 2px 2px;
+    }
+    .card-action{
+        margin-top: 5px;
+        
+    }
 
-.liner{
-    border-top: 1px solid rgba(160,160,160,0.2);
-    margin-bottom: 5px;
-}
+    .liner{
+        border-top: 1px solid rgba(160,160,160,0.2);
+        margin-bottom: 5px;
+    }
 
-#ingridients-wrapper{
-  width: 100%;
-  display:flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  padding: 4px;
-}
+    #ingridients-wrapper{
+      width: 100%;
+      display:flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding: 4px;
+    }
 
-#read-more-button{
+    #read-more-button{
 
-  width:100%;
-}
+      width:100%;
+    }
 
-#test{
-  display:flex;
-  margin-top: 5px;
-  justify-content: flex-end;
-}
+    #test{
+      display:flex;
+      margin-top: 5px;
+      justify-content: flex-end;
+    }
 
-.actions{
-  margin-right: 5px;
-}
+    .actions{
+      margin-right: 5px;
+    }
 
-.card .card-image img{
-  height: 200px;
-  margin-top: 10px;
-}
+    .card .card-image img{
+      height: 200px;
+      margin-top: 10px;
+    }
 
 </style>
