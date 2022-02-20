@@ -32,12 +32,23 @@
       <div class="row">
           <div v-for="ingridient in ingridientsList" :key="ingridient" class="chip" title="click to remove" @click="removeFromList(ingridient)">{{ingridient}}</div>
       </div>
-      <div class="liner"></div>
-
+            <div class="liner"></div>
+        <div v-if="!editMode" id="image-select">
+            <div v-if="!image">
+          <h6>Select an image</h6>
+          <input type="file" @change="onFileChange">
+        </div>
+        <div v-else>
+          <img :src="image" />
+          <button @click="removeImage">Remove image</button>
+        </div>
+      </div>
+     
       <input v-if="editMode == true" type="submit" class="waves-effect waves-light #ff9800 orange btn" value="Submit changes" @click="onSubmit" />
       <input v-else type="submit" class="waves-effect waves-light btn" value="Create" @click="onSubmit"/>
 
     </form>
+    
   </div>
         
 </template>
@@ -54,7 +65,9 @@ export default {
           ingridientsList: [],
           editMode: false,
           alertSuccess: false,
-          alertErrors: []
+          alertErrors: [],
+          image : '',
+          imageFile: ''
       }
   },
   methods: {
@@ -78,7 +91,13 @@ export default {
                 let apiHandler = new ApiHandler()
 
                 try{
-                  await apiHandler.createRecipee(this.description, this.name, this.ingridientsList)
+                  var formData = new FormData();
+                  formData.append("image", this.imageFile);
+                  formData.append("name", this.name);
+                  formData.append("description", this.description);
+                  formData.append("ingridients", JSON.stringify(this.ingridientsList));
+
+                  await apiHandler.createRecipee(formData)
 
                   this.alertSuccess = true
                   this.alertErrors = false
@@ -110,7 +129,29 @@ export default {
          },
          closeErrorAlert(){
            this.alertErrors = []
-         }
+         },
+         onFileChange(e) {
+           console.log('unutra')
+          var files = e.target.files || e.dataTransfer.files;
+          if (!files.length)
+            return;
+          this.imageFile = e.target.files[0]  
+          this.createImage(files[0]);
+        },
+    createImage(file) {
+      console.log('create-image')
+      var image = new Image();
+      var reader = new FileReader();
+      var vm = this;
+  
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (e) {
+      this.image = '';
+    }
 
     },
   mounted(){
@@ -193,4 +234,13 @@ export default {
   color: black;
 }
 
+img {
+  width: 150px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+#image-select{
+  margin-bottom: 20px;
+}
 </style>

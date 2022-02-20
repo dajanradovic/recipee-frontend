@@ -5,6 +5,9 @@
           <router-link :to="{ name: 'RecipeeEditForm', params: { id: id }}" class="waves-effect waves-light btn-small actions"><i class="material-icons">mode_edit</i></router-link>
           <button @click="removeRecipee(id)" class="waves-effect #d32f2f red darken-2 btn-small actions"><i class="material-icons">delete</i></button>
         </div>
+        <div class="card-image">
+          <img alt="img" :src="path ? baseUrl + '/image?path=' + path : image" >
+        </div>
         <div class="card-content white-text">
           <span class="card-title">{{name}}</span>
           <p>{{shortDescription}}</p>
@@ -23,11 +26,19 @@
 
 <script>
 import ApiHandler from '../handlers/ApiHandler.js'
+const imgLink = require('../../public/no-image1.jpg')
+import  { baseBackendUrl  }  from '../../settings.js'
 
 
 export default {
     name: 'RecipeeCard',
-    props: ['name', 'description', 'ingridients', 'id'],
+    props: ['name', 'description', 'ingridients', 'id', 'path'],
+     data(){
+      return{
+         image : imgLink,
+         baseUrl : baseBackendUrl
+      }
+  },
     methods: {
       async removeRecipee(id){
 
@@ -104,6 +115,11 @@ export default {
 
 .actions{
   margin-right: 5px;
+}
+
+.card .card-image img{
+  height: 200px;
+  margin-top: 10px;
 }
 
 </style>

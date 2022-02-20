@@ -18,7 +18,8 @@
                         :description="recipee.description" 
                         :ingridients="recipee.ingridients" 
                         :key="recipee.id"
-                        :id="recipee._id">
+                        :id="recipee._id"
+                        :path="recipee.image">
         </RecipeeCard>
     </div>
     <div id="no-data" v-else>No recipees available</div>
@@ -65,20 +66,7 @@ export default {
     search: _.debounce(async function (e) {
       
       this.fetchNewPage(1)
-      /*let apiHandler = new ApiHandler()
-
-      try{
-        apiHandler.searchRecipees(1, this.searchInput).then(res => {
-
-            this.recipeesList = res.data
-            this.meta = res.meta
-            this.$router.push({ path: '/recipees', query: { page: 1, name : this.searchInput, ingridients : this.searchInput } })   
-
-           })
-      } catch(err){
-          console.log(err)
-            }*/
-
+      
     }, 1500),
    
   
@@ -121,7 +109,7 @@ export default {
       width: 300px;
       flex-shrink:0; 
       margin: 10px;
-      height: 350px;
+      height: 550px;
       overflow: auto;
   }
 
